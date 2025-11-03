@@ -3,7 +3,7 @@ CC = cc
 CCFLAGS = -Wall -Wextra -Werror -Ift_printf -Iget_next_line
 
 MLX = ./minilibx-linux
-SRCS = So_long.c parsing.c parsing_utils_1.c parsing_utils_2.c mlxexe.c mlx_utils_1.c mlx_utils_2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c #ft_printf/ft_printf_utils.c ft_printf/ft_printf.c
+SRCS = So_long.c parsing.c parsing_utils_1.c parsing_utils_2.c mlxexe.c mlx_utils_1.c mlx_utils_2.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c ft_printf/ft_printf_utils.c ft_printf/ft_printf.c
 
 OBJS = $(SRCS:.c=.o)
 MLXFLAGS = -L$(MLX) -lmlx -lXext -lX11 -lm

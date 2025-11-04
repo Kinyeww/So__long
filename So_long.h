@@ -6,7 +6,7 @@
 /*   By: ckin-yew <ckin-yew@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:12:04 by ckin-yew          #+#    #+#             */
-/*   Updated: 2025/10/31 21:39:55 by ckin-yew         ###   ########.fr       */
+/*   Updated: 2025/11/04 21:17:56 by ckin-yew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	move_player(t_game *game, int x, int y);
 void	locate_player(t_game *game);
 void	update_map(t_game *game);
 void	put_image_function(t_game *g, int n, int i, int j);
-void	exit_game(t_game *game);
+int		exit_game(t_game *game);
 int		cal_size(char **map, int size, char cord);
 void	collecting(t_game *game);
 int		check_collectible(t_game *game);

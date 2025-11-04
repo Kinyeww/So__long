@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_utils_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ckin-yew <ckin-yew@student.42kl.edu.m      +#+  +:+       +#+        */
+/*   By: ckin-yew <ckin-yew@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 21:21:29 by ckin-yew          #+#    #+#             */
-/*   Updated: 2025/10/31 21:21:30 by ckin-yew         ###   ########.fr       */
+/*   Updated: 2025/11/04 21:17:33 by ckin-yew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "So_long.h"
 #include "minilibx-linux/mlx.h"
 
-void	exit_game(t_game *game)
+int	exit_game(t_game *game)
 {
 	int	x;
 
@@ -33,6 +33,7 @@ void	exit_game(t_game *game)
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	exit(0);
+	return (1);
 }
 
 void	locate_player(t_game *game)
@@ -82,11 +83,22 @@ int	render(t_game *game)
 	return (0);
 }
 
-int	open_window(t_game *game)
+int	check_collectible(t_game *game)
 {
-	image_loader(game);
-	render(game);
-	mlx_key_hook(game->win, key_hook, game);
-	mlx_loop(game->mlx);
-	return (0);
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (game->map[y][x] == 'C')
+				return (0);
+			x++;
+		}
+		y++;
+	}
+	return (1);
 }

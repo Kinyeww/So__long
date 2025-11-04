@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exemlx.c                                           :+:      :+:    :+:   */
+/*   mlxexe.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckin-yew <ckin-yew@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:15:49 by ckin-yew          #+#    #+#             */
-/*   Updated: 2025/10/31 21:42:36 by ckin-yew         ###   ########.fr       */
+/*   Updated: 2025/11/04 21:16:45 by ckin-yew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,6 @@ void	image_loader(t_game *g)
 (g->mlx, "asset/collectible.xpm", &img_w, &img_h);
 }
 
-int	check_collectible(t_game *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			if (game->map[y][x] == 'C')
-				return (0);
-			x++;
-		}
-		y++;
-	}
-	return (1);
-}
-
 void	collecting(t_game *game)
 {
 	int	old_y;
@@ -89,6 +69,16 @@ void	collecting(t_game *game)
 		}
 		old_y++;
 	}
+}
+
+int	open_window(t_game *game)
+{
+	image_loader(game);
+	render(game);
+	mlx_key_hook(game->win, key_hook, game);
+	mlx_hook(game->win, 17, 0, exit_game, game);
+	mlx_loop(game->mlx);
+	return (0);
 }
 
 int	key_hook(int keycode, t_game *game)
